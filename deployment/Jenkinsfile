@@ -38,7 +38,7 @@ stage('Docker Build'){
 if (isUnix()) {
 sh "docker build -t kunalsant/devops-groovy-products:latest ."
 } else {
-bat(/"docker build -t kunalsant/devops-groovy-products:latest ."/)
+bat("docker build -t kunalsant/devops-groovy-products:latest .")
 }
 }
 
