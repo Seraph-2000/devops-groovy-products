@@ -34,6 +34,16 @@ sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean verify"
 bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean verify/)
 }
 }
+
+stage('Sonar') {
+if (isUnix()) {
+sh "'${mvnHome}/bin/mvn' sonar:sonar"
+} else {
+bat(/"${mvnHome}\bin\mvn" sonar:sonar/)
+}
+}
+
+
 stage('Docker Build'){
 if (isUnix()) {
 sh "docker build -t kunalsant/devops-groovy-products:latest ."
@@ -41,6 +51,7 @@ sh "docker build -t kunalsant/devops-groovy-products:latest ."
 bat("docker build -t kunalsant/devops-groovy-products:latest .")
 }
 }
+
 
 
 stage('DockerPush'){
@@ -55,13 +66,7 @@ bat("docker login -u ${env.DockerHubTokenUser} -p ${DockerHubTokenPassword}")
 }
 }
 
-stage('Sonar') {
-if (isUnix()) {
-sh "'${mvnHome}/bin/mvn' sonar:sonar"
-} else {
-bat(/"${mvnHome}\bin\mvn" sonar:sonar/)
-}
-}
+
 
      
        
