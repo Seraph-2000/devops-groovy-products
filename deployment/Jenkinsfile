@@ -42,6 +42,19 @@ bat("docker build -t kunalsant/devops-groovy-products:latest .")
 }
 }
 
+
+stage('DockerPush'){
+withCredentials([userNamePassword(credentialsId:'DockerHubToken',usernameVariable:'DockerHubTokenUser',passwordVariable:'DockerHubTokenPassword')]){
+
+if (isUnix()) {
+sh "docker login -u ${env.DockerHubTokenUser} -p ${DockerHubTokenPassword}"
+sh 'docker push kunalsant/devops-groovy-products:latest'
+} else {
+bat("docker login -u ${env.DockerHubTokenUser} -p ${DockerHubTokenPassword}")
+}
+}
+}
+
 stage('Sonar') {
 if (isUnix()) {
 sh "'${mvnHome}/bin/mvn' sonar:sonar"
