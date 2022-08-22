@@ -63,19 +63,7 @@ bat(/"${mvnHome}\bin\mvn" sonar:sonar/)
 }
 }
 
-stage('DockerPush'){
-withCredentials([userNamePassword(credentialsId:'DockerHubToken',usernameVariable:'DockerHubTokenUser',
-passwordVariable:'DockerHubTokenPassword')]){
-if (isUnix()) {
-sh "docker login -u ${env.DockerHubTokenUser} -p ${DockerHubTokenPassword}"
-sh 'docker push kunalsant/devops-groovy-products:latest'
-} else {
-bat("docker login -u ${env.DockerHubTokenUser} -p ${DockerHubTokenPassword}")
-bat('docker push kunalsant/devops-groovy-products:latest')
-}
-}
-}
-       
+     
        
 stage('Publish') {
 def server = Artifactory.server 'Artifactory'
