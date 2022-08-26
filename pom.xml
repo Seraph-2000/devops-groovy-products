@@ -9,12 +9,11 @@
 	</parent>
 	<groupId>devops-groovy-products</groupId>
 	<artifactId>devops-groovy-products</artifactId>
-
-	<version>1.1.1-SNAPSHOT</version>
-
+	<version>0.0.1-SNAPSHOT</version>
 	<name>devops-groovy-products</name>
 	<description>Demo project for Spring Boot</description>
-	<profile>
+	<profiles>
+<profile>
 <id>openshift</id>
 <build>
 <plugins>
@@ -68,13 +67,13 @@
 
 <scm>
 
-<connection>scm:git:git@github.com:Seraph-2000/devops-groovy-products.git</connection>
+<connection>scm:git:http://git@github.com/Chetuw/devops-groovy-products.git</connection>
 
-<developerConnection>scm:git:git@github.com:Seraph-2000/devops-groovy-products.git</developerConnection>
+<developerConnection>scm:git:http://git@github.com/Chetuw/devops-groovy-products.git</developerConnection>
 
-<url>git@github.com:Seraph-2000/devops-groovy-products.git</url>
+<url>http://git@github.com/Chetuw/devops-groovy-products.git</url>
 
-<tag>v0.0.1</tag>
+<tag>v0.0.2</tag>
 
 </scm>
 	<dependencies>
@@ -141,9 +140,6 @@
 	</dependencies>
 
 	<build>
-		<profiles>
-
-		
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
